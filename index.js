@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const axios = require("axios");
-const APP_URL = "http://61.19.127.228:5050/";
+const APP_URL = "http://61.19.127.228:5050";
 const app = express();
 app.use(
   bodyParser.urlencoded({
@@ -13,12 +13,14 @@ app.use(
 app.use(bodyParser.json());
 
 app.post("/getMeetingByDocno", cors(), function (req, res) {
-  let docno = req.bydy.docno;
+  let docno = req.body.docno;
+// console.log(docno);
 //   let resp = {};
   axios
     .get(`${APP_URL}/getMeetingByDocno/${docno}`)
     .then((resp) => {
-      return res.json(resp);
+        // console.log();
+      return res.json(resp.data);
     })
     .catch((error) => console.log("Error :", error));
 });
