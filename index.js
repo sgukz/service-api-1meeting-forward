@@ -20,6 +20,16 @@ app.post("/getMeetingByDocno", function (req, res) {
         .catch((error) => console.log("Error :", error));
 });
 
+app.get("/checkUser/:userId", function (req, res) {
+  const userId = req.params.userId;
+  axios
+        .get(`${APP_URL}/checkUser/${userId}`)
+        .then((resp) => {
+            res.status(200).json(resp.data);
+        })
+        .catch((error) => console.log("Error :", error));
+});
+
 app.listen(process.env.PORT || 8000, function () {
   console.log("Server up and listening");
 });
