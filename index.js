@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 
 app.post("/getMeetingByDocno", function (req, res) {
   let docno = req.body.docno;
-  return res.json({docno});
+  res.status(200).json({docno});
 // console.log(docno);
 //   let resp = {};
 //   axios
