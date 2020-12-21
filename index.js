@@ -12,9 +12,9 @@ app.use(
 
 app.use(bodyParser.json());
 
-app.get("/getMeetingByDocno/:docno", cors(), function (req, res) {
-  let docno = req.params.docno;
-  let resp = {};
+app.post("/getMeetingByDocno", cors(), function (req, res) {
+  let docno = req.bydy.docno;
+//   let resp = {};
   axios
     .get(`${APP_URL}/getMeetingByDocno/${docno}`)
     .then((resp) => {
