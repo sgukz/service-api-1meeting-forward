@@ -12,7 +12,12 @@ const APP_URL = "http://61.19.127.228:5050";
 
 app.post("/getMeetingByDocno", function (req, res) {
   const docno = req.body.docno
-  res.status(200).json(docno);
+  axios
+        .get(`${APP_URL}/getMeetingByDocno/${docno}`)
+        .then((resp) => {
+            res.status(200).json(resp.data);
+        })
+        .catch((error) => console.log("Error :", error));
 });
 
 app.listen(process.env.PORT || 8000, function () {
