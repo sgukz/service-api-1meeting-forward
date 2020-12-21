@@ -9,8 +9,8 @@ app.use(
   })
 );
 app.use(bodyParser.json());
-const APP_URL = "http://localhost:3000";
-// const APP_URL = "http://61.19.127.228:5050";
+// const APP_URL = "http://localhost:3000";
+const APP_URL = "http://61.19.127.228:5050";
 
 app.get("/getMeetingByDocno/:docno",cors(), function (req, res) {
   const docno = req.params.docno;
