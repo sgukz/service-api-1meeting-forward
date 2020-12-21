@@ -9,7 +9,8 @@ app.use(
   })
 );
 app.use(bodyParser.json());
-const APP_URL = "http://61.19.127.228:5050";
+const APP_URL = "http://localhost:3000";
+// const APP_URL = "http://61.19.127.228:5050";
 
 app.get("/getMeetingByDocno/:docno",cors(), function (req, res) {
   const docno = req.params.docno;
@@ -70,9 +71,10 @@ app.get("/checkUser/:userId",cors(), function (req, res) {
 
 app.post("/saveRegister",cors(), function (req, res) {
     const form = req.body;
+    console.log(form);
     axios
       .post(`${APP_URL}/saveRegister`,{
-        form
+        form: form
       })
       .then((resp) => {
         res.status(200).json(resp.data);
