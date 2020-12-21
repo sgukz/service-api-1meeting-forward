@@ -1,6 +1,5 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const cors = require("cors");
 const axios = require("axios");
 const APP_URL = "http://61.19.127.228:5050";
 const app = express();
@@ -12,7 +11,7 @@ app.use(
 
 app.use(bodyParser.json());
 
-app.post("/getMeetingByDocno", cors(), function (req, res) {
+app.post("/getMeetingByDocno", function (req, res) {
   let docno = req.body.docno;
 // console.log(docno);
 //   let resp = {};
