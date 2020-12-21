@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const axios = require("axios");
+const cors = require("cors");
 const app = express();
 app.use(
   bodyParser.urlencoded({
@@ -10,7 +11,7 @@ app.use(
 app.use(bodyParser.json());
 const APP_URL = "http://61.19.127.228:5050";
 
-app.get("/getMeetingByDocno/:docno", function (req, res) {
+app.get("/getMeetingByDocno/:docno",cors(), function (req, res) {
   const docno = req.params.docno;
   axios
     .get(`${APP_URL}/getMeetingByDocno/${docno}`)
@@ -20,7 +21,7 @@ app.get("/getMeetingByDocno/:docno", function (req, res) {
     .catch((error) => console.log("Error :", error));
 });
 
-app.get("/checkUser/:userId", function (req, res) {
+app.get("/checkUser/:userId",cors(), function (req, res) {
   const userId = req.params.userId;
   axios
     .get(`${APP_URL}/checkUser/${userId}`)
@@ -30,7 +31,7 @@ app.get("/checkUser/:userId", function (req, res) {
     .catch((error) => console.log("Error :", error));
 });
 
-app.get("/getMeetingRegisByUserID/:docno/:userId", function (req, res) {
+app.get("/getMeetingRegisByUserID/:docno/:userId",cors(), function (req, res) {
   const docno = req.params.docno;
   const userId = req.params.userId;
   axios
@@ -41,7 +42,7 @@ app.get("/getMeetingRegisByUserID/:docno/:userId", function (req, res) {
     .catch((error) => console.log("Error :", error));
 });
 
-app.post("/saveCheckin", function (req, res) {
+app.post("/saveCheckin",cors(), function (req, res) {
   const userId = req.body.userId;
   const docno = req.body.docno;
   const is_check = req.body.is_check;
@@ -57,7 +58,7 @@ app.post("/saveCheckin", function (req, res) {
     .catch((error) => console.log("Error :", error));
 });
 
-app.get("/checkUser/:userId", function (req, res) {
+app.get("/checkUser/:userId",cors(), function (req, res) {
     const userId = req.params.userId;
     axios
       .get(`${APP_URL}/checkUser/${userId}`)
@@ -67,7 +68,7 @@ app.get("/checkUser/:userId", function (req, res) {
       .catch((error) => console.log("Error :", error));
   });
 
-app.post("/saveRegister", function (req, res) {
+app.post("/saveRegister",cors(), function (req, res) {
     const form = req.body;
     axios
       .post(`${APP_URL}/saveRegister`,{
