@@ -13,15 +13,16 @@ app.use(bodyParser.json());
 
 app.post("/getMeetingByDocno", function (req, res) {
   let docno = req.body.docno;
+  return res.json({docno});
 // console.log(docno);
 //   let resp = {};
-  axios
-    .get(`${APP_URL}/getMeetingByDocno/${docno}`)
-    .then((resp) => {
-        // console.log();
-      return res.json(resp.data);
-    })
-    .catch((error) => console.log("Error :", error));
+//   axios
+//     .get(`${APP_URL}/getMeetingByDocno/${docno}`)
+//     .then((resp) => {
+//         // console.log();
+//       return res.json(resp.data);
+//     })
+//     .catch((error) => console.log("Error :", error));
 });
 
 app.listen(process.env.PORT || 3000, function () {
